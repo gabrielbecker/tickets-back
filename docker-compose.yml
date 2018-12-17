@@ -6,11 +6,10 @@ services:
     ports:
       - "5432:5432"
     environment:
-      DB_PASS: postgres
-      DB_USER: postgres
-      DB_NAME: TICKETS
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
-      - ./db:/var/lib/postgresql
+      - ./db:/var/lib/postgresql/data
 
   back:
     build: .
@@ -22,3 +21,5 @@ services:
       - db
     env_file:
       - extra/user/local.env
+    links:
+      - "db:database"

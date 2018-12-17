@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
 
+    'tickets'
 ]
 
 MIDDLEWARE = [
@@ -80,8 +80,16 @@ WSGI_APPLICATION = 'blueticket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_DEFAULT_URL'])}
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT'],
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -107,6 +115,7 @@ REST_FRAMEWORK = {
                                        'rest_framework.authentication.BasicAuthentication'],
     'EXCEPTION_HANDLER': 'utils.utils.custom_exception_handler',
     'DEFAULT_PAGINATION_CLASS': 'utils.pagination.CustomPagination',
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }
 
 # Internationalization
