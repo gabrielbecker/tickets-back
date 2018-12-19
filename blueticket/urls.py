@@ -38,5 +38,6 @@ urlpatterns = [
     ep('', include(router.urls)),
     ep('admin/', admin.site.urls),
     ep('docs/', schema_view),
-    ep('tickets/', include('tickets.urls')),
+    # ep('rest-auth/', include('rest_auth.urls')),
+    ep('', include('tickets.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

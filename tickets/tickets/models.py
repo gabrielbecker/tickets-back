@@ -13,6 +13,6 @@ class Tickets(models.Model):
 
     class Meta:
         db_table = 'tickets'
-        verbose_name = 'Event'
-        verbose_name_plural = 'Events'
+        verbose_name = 'Ticket'
+        verbose_name_plural = 'Tickets'
         unique_together = ['event', 'type']
