@@ -89,11 +89,11 @@ WSGI_APPLICATION = 'blueticket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ['DB_HOST'],
-        'PORT': os.environ['DB_PORT'],
+        'NAME': 'dabb0jklvergvr',
+        'USER': 'loscsdhborflzf',
+        'PASSWORD': '02ac755172f869635b7b41a129b42aeb699035b725ae2f3068f2e392eb632cfc',
+        'HOST': 'ec2-107-20-237-78.compute-1.amazonaws.com',
+        'PORT': 5432,
     }
 }
 
