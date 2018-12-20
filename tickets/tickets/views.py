@@ -18,13 +18,13 @@ class TicketsViewSet(ModelViewSet):
     def create(self, request, *args, **kwargs):
 
         event_id = self.request.data.get('event')
-        type = self.request.data.get('type')
+        ticket_type = self.request.data.get('type')
 
         event = Events.objects.get(id=event_id)
 
         ticket = Tickets()
         ticket.event = event
-        ticket.type = type
+        ticket.type = ticket_type
         ticket.save()
 
         return Response(status=HTTP_201_CREATED, data=ticket.id)
