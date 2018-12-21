@@ -18,7 +18,7 @@ class TicketSerializer(serializers.ModelSerializer):
 class TicketFilter(django_filters.FilterSet):
 
     type = django_filters.CharFilter(lookup_expr='icontains')
-    event = django_filters.CharFilter(lookup_expr='icontains', field_name='event__name')
+    event = django_filters.CharFilter(lookup_expr='icontains', field_name='event__id')
 
     class Meta:
         model = Tickets
